@@ -14,5 +14,5 @@ parse_git_branch() {
 # keeping only the first letter after "/", ".", and "-"
 # call with parameters: "<path>" <max-length>
 _dir_chomp() {
-	ruby -e"a='$1'.gsub(%r{^$HOME},'~');b,a=a,a.gsub(%r{([-/])(\.?[^-/.])[^-/]+([-/].*)},'\\1\\2\\3')while(a.length>$2)&&(b!=a);print a"
+	ruby -e"a='$1'.gsub(%r{^$HOME},'~');b,a=a,a.gsub(%r{([-/])(\.?[^-/.])[^-/]+([^/]*/.*)},'\\1\\2\\3')while(a.length>$2)&&(b!=a);print a"
 }
