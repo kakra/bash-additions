@@ -7,12 +7,18 @@
 # prompt
 # no parameters
 parse_git_branch() {
-	git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ [git:\1]/'
+	if [ -x "$(type -p git)" ]; then
+		git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ [git:\1]/'
+	fi
 }
 
 # shortens current path by compressing all but the last path component,
 # keeping only the first letter after "/", ".", and "-"
 # call with parameters: "<path>" <max-length>
 _dir_chomp() {
-	ruby -e"a='$1'.gsub(%r{^$HOME},'~');b,a=a,a.gsub(%r{([-/])(\.?[^-/.])[^-/]+([^/]*/.*)},'\\1\\2\\3')while(a.length>$2)&&(b!=a);print a"
+	if [ -x "$(type -p ruby)" ]; then
+		ruby -e"a='$1'.gsub(%r{^$HOME},'~');b,a=a,a.gsub(%r{([-/])(\.?[^-/.])[^-/]+([^/]*/.*)},'\\1\\2\\3')while(a.length>$2)&&(b!=a);print ' ',a"
+	else
+		echo -n " ${PWD/#$HOME/~}"
+	fi
 }
