@@ -1,6 +1,8 @@
 SUMMARY
 =======
 
+[![Join the chat at https://gitter.im/kakra/bash-additions](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/kakra/bash-additions?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 These are some bash tools I collected over time and which I use on different
 computers. To ease sharing this on multiple computers I started publishing
 this on [Github][] - thus sharing it with the public.
