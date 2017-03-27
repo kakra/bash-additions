@@ -17,7 +17,7 @@ parse_git_branch() {
 # call with parameters: "<path>" <max-length>
 _dir_chomp() {
 	if [ -x "$(type -p ruby)" ]; then
-		ruby -e"a='$1'.gsub(%r{^$HOME},'~');b,a=a,a.gsub(%r{([-/])(\.?[^-/.])[^-/]+([^/]*/.*)},'\\1\\2\\3')while(a.length>$2)&&(b!=a);print ' ',a"
+		ruby -e"a=%q{$1}.gsub(%r{^$HOME},'~');b,a=a,a.gsub(%r{([-/])(\.?[^-/.])[^-/]+([^/]*/.*)},'\\1\\2\\3')while(a.length>$2)&&(b!=a);print ' ',a"
 	else
 		echo -n " ${PWD/#$HOME/~}"
 	fi
