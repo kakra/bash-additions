@@ -7,8 +7,8 @@
 # prompt
 # no parameters
 parse_git_branch() {
-	if [ -x "$(type -p git)" ]; then
-		git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ [git:\1]/'
+	if [ -x "/usr/bin/git" ]; then
+		/usr/bin/git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ [git:\1]/'
 	fi
 }
 
